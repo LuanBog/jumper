@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/joshuamclean-mountain-trials.mp3-ff7ddc85c73926cda884268f0b2bbf76.mp3str"
+
+[deps]
+
+source_file="res://sounds/joshuamclean-mountain-trials.mp3"
+dest_files=[ "res://.import/joshuamclean-mountain-trials.mp3-ff7ddc85c73926cda884268f0b2bbf76.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

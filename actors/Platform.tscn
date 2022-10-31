@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/Platform.gd" type="Script" id=1]
+[ext_resource path="res://sprites/FreeTileset/png/Tiles/15.png" type="Texture" id=2]
+[ext_resource path="res://sprites/FreeTileset/png/Tiles/14.png" type="Texture" id=3]
+[ext_resource path="res://sprites/FreeTileset/png/Tiles/13.png" type="Texture" id=4]
+[ext_resource path="res://actors/Mushroom.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/Spike.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 401, 10 )
+
+[node name="Platform" type="StaticBody2D"]
+script = ExtResource( 1 )
+mushroom = ExtResource( 5 )
+spike = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 16, 11.625 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 112, 11.625 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 48, 11.625 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 80, 11.625 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 64.5, 8 )
+scale = Vector2( 6.35, 0.7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 64, 8 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2( 63, 10 )
+shape = SubResource( 2 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
